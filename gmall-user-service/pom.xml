@@ -8,28 +8,29 @@
         <version>1.5.21.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example</groupId>
-    <artifactId>demo</artifactId>
+    <groupId>com.wjq.gmall</groupId>
+    <artifactId>gmall-user-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demo</name>
+    <name>gmall-user-service</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+   <dependencies>
+       <dependency>
+           <groupId>com.wjq.gmall</groupId>
+           <artifactId>gmall-service-util</artifactId>
+           <version>1.0-SNAPSHOT</version>
+       </dependency>
+       <dependency>
+           <groupId>com.wjq.gmall</groupId>
+           <artifactId>gmall-api</artifactId>
+           <version>1.0-SNAPSHOT</version>
+       </dependency>
+   </dependencies>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
 
     <build>
         <plugins>

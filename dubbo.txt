@@ -1,0 +1,63 @@
+springcloud 的优点  全家桶  有一个强大的家族   http协议 rest风格
+
+Dubbo 基于 rcp协议  使用了dubbo协议   传输的性能比springcloud快
+
+各有优缺点
+
+
+1 dubbo 的  soa 的工作原理 和sprongcloud 类似
+2 dubbo 和springcloud 的区别在于dubbo 由自己的dubbo 协议通讯  sc是由http 协议 （rest风格）
+3 dubbo 有一个注册中心的客户端在实时同步注册中心的服务信息
+4 阿里还提供了一个小型的监控中心  dubbo-admin web项目  同时提供配置负载均衡
+ springcloud 在那个层面提供了负载均衡 优于 dubbo
+5
+
+
+
+将dubbo框架 引入到项目中
+    1  将dubbo 监控中心和tomcat上传到服务器
+    2  使用unzip命令解压dubbo-admin.war   unzip
+    3  启动tomcat 打开监控中心
+
+    4  安装配置zookeeper
+        1 解压 tar -zxvf
+        2 修改zookeeper的配置文件
+            拷贝一份conf/zoo_simple.cfg zoo.cfg
+            修改dataDir = /opt/gmall/zookeeper-3.4.11/data
+
+
+        3 启动zookeeper
+            ./zKserver.sh start
+            ./zKserver.sh status
+
+        4 配置zookeeper 自启动和监控中心自启动
+            /etc/init.d 开机自启动服务脚本目录
+
+            在本目录下创建启动脚本
+                #processname:dubbo-admin
+                CATALANA_HOME=/opt/gmall/apache-tomcat-8.5.24
+                export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk.x86_64
+                case $1 in
+                start)
+                        echo "Starting Tomcat..."
+                        $CATALANA_HOME/bin/startup.sh
+                        ;;
+                stop)
+                        echo "Stopping Tomcat..."
+                        $CATALANA_HOME/bin/shutdown.sh
+                        ;;
+                restart)
+                        echo "Stopping Tomcat..."
+                        $CATALANA_HOME/bin/shutdown.sh
+                        sleep 2
+                        echo
+                        echo "Starting Tomcat..."
+                        $CATALANA_HOME/bin/startup.sh
+                        ;;
+                *)
+                        echo "Usage:tomcat {start|stop|restart}"
+                        ;;esac
+            在使用chkconfig --add dubbo-admin 将服务添加进去
+
+            创建zookeeper的自启动
+
