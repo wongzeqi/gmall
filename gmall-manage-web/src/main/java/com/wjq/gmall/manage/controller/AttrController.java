@@ -3,6 +3,7 @@ package com.wjq.gmall.manage.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.wjq.gmall.bean.PmsBaseAttrInfo;
+import com.wjq.gmall.bean.PmsBaseAttrValue;
 import com.wjq.gmall.service.AttrService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -33,9 +34,19 @@ public class AttrController {
     @RequestMapping("saveAttrInfo")
     @ResponseBody
     public String saveAttrInfo (@RequestBody PmsBaseAttrInfo pmsBaseAttrInfo){
-        attrService.saveAttrInfo(pmsBaseAttrInfo);
-        return "success";
+        return attrService.saveAttrInfo(pmsBaseAttrInfo);
     }
+
+    //获取属性对应的是所有属性值
+
+    @RequestMapping("getAttrValueList")
+    @ResponseBody
+    public List<PmsBaseAttrValue> getAttrValueList (String attrId){
+        List<PmsBaseAttrValue> pmsBaseAttrValues =  attrService.getAttrValueList(attrId);
+        return pmsBaseAttrValues;
+    }
+
+    //修改属性值
 
 
 
