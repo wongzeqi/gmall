@@ -12,7 +12,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 通用mapper的整合
 1  导入pom
 <!-- 通用mapper -->
-        <!--java.util.NoSuchElementException: No value bound  同意mapper版本过低会报错 必须和springboot版本契合-->
+        <!--java.JedisPool.NoSuchElementException: No value bound  同意mapper版本过低会报错 必须和springboot版本契合-->
         <dependency>
             <groupId>tk.mybatis</groupId>
             <artifactId>mapper-spring-boot-starter</artifactId>

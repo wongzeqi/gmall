@@ -1,5 +1,8 @@
 package com.wjq.gmall.service;
 
+
+import com.wjq.gmall.bean.PmsProductSaleAttr;
+import com.wjq.gmall.bean.PmsProductSaleAttrValue;
 import com.wjq.gmall.bean.PmsBaseAttrInfo;
 import com.wjq.gmall.bean.PmsBaseAttrValue;
 
@@ -11,4 +14,8 @@ public interface AttrService {
     String saveAttrInfo(PmsBaseAttrInfo pmsBaseAttrInfo);
 
     List<PmsBaseAttrValue> getAttrValueList(String attrId);
+
+    List<PmsProductSaleAttr> selectByProductId(PmsProductSaleAttr pmsProductSaleAttr);
+
+    List<PmsProductSaleAttrValue> getProductSaleAttrValueList(PmsProductSaleAttrValue pmsProductSaleAttrValue);
 }

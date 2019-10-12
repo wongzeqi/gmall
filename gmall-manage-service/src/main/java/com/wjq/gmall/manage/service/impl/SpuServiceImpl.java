@@ -24,6 +24,7 @@ public class SpuServiceImpl implements SpuService {
 
 
 
+
     public List<PmsProductInfo> spuList(String catalog3Id) {
         PmsProductInfo pmsProductInfo = new PmsProductInfo();
         pmsProductInfo.setCatalog3Id(catalog3Id);
@@ -76,8 +77,9 @@ public class SpuServiceImpl implements SpuService {
         //循环遍历 查询出所有的属性值
         PmsProductSaleAttrValue pmsProductSaleAttrValue = new PmsProductSaleAttrValue();
         for(PmsProductSaleAttr pmsProductSaleAttr1 : pmsProductSaleAttrs){
-            //查询
+            //根据商品id和属性id 同时查询出属性值
             pmsProductSaleAttrValue.setSaleAttrId(pmsProductSaleAttr1.getSaleAttrId());
+            pmsProductSaleAttrValue.setProductId(pmsProductSaleAttr1.getProductId());
             List<PmsProductSaleAttrValue> pmsProductSaleAttrValues = pmsProductSaleAttrValueMapper.select(pmsProductSaleAttrValue);
             pmsProductSaleAttr1.setSpuSaleAttrValueList(pmsProductSaleAttrValues);
         }
@@ -92,6 +94,13 @@ public class SpuServiceImpl implements SpuService {
         pmsProductImage.setProductId(spuId);
         List<PmsProductImage> pmsProductImages = pmsProductImageMapper.select(pmsProductImage);
         return pmsProductImages;
+    }
+
+
+
+    public List<PmsProductSaleAttr> spuSaleAttrListCheckBySku(String productId,String skuId){
+        List<PmsProductSaleAttr> pmsProductSaleAttrs = pmsProductSaleAttrMapper.selectSpuSaleAttrListCheckBySku(productId,skuId);
+        return pmsProductSaleAttrs;
     }
 
 

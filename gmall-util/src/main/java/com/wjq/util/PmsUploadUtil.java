@@ -31,7 +31,9 @@ public class PmsUploadUtil {
             int i = filename.lastIndexOf(".");
             String extName = filename.substring(i+1);
 
-            infos = storageClient.upload_file("d:/a.png",extName, null);
+            byte[] bytes = multipartFile.getBytes();// 获得上传的二进制对象
+
+            infos = storageClient.upload_file(bytes,extName, null);
         }catch (Exception e){
             e.printStackTrace();
         }

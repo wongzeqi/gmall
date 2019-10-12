@@ -1,11 +1,15 @@
 package com.wjq.gmall.manage.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.wjq.gmall.service.AttrService;
 import com.wjq.gmall.bean.PmsBaseAttrInfo;
 import com.wjq.gmall.bean.PmsBaseAttrValue;
 import com.wjq.gmall.manage.mapper.PmsBaseAttrInfoMapper;
 import com.wjq.gmall.manage.mapper.PmsBaseAttrValueMapper;
-import com.wjq.gmall.service.AttrService;
+import com.wjq.gmall.manage.mapper.PmsProductSaleAttrMapper;
+import com.wjq.gmall.manage.mapper.PmsProductSaleAttrValueMapper;
+import com.wjq.gmall.bean.PmsProductSaleAttr;
+import com.wjq.gmall.bean.PmsProductSaleAttrValue;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.entity.Example;
@@ -20,14 +24,26 @@ public class AttrServiceImpl implements AttrService {
     PmsBaseAttrInfoMapper pmsBaseAttrInfoMapper;
     @Autowired
     PmsBaseAttrValueMapper pmsBaseAttrValueMapper;
+    @Autowired
+    PmsProductSaleAttrMapper pmsProductSaleAttrMapper;
+    @Autowired
+    PmsProductSaleAttrValueMapper pmsProductSaleAttrValueMapper;
 
 
-    //根据三级分类的id查询所有的属性名称
+    //根据三级分类的id查询所有的属性名称  获取商品的属性值
     @Override
     public List<PmsBaseAttrInfo> attrInfoList(String catalog3Id) {
         PmsBaseAttrInfo info = new PmsBaseAttrInfo();
         info.setCatalog3Id(catalog3Id);
         List<PmsBaseAttrInfo> pmsBaseAttrInfos = pmsBaseAttrInfoMapper.select(info);
+
+        //查询属性值
+        PmsBaseAttrValue pmsBaseAttrValue = new PmsBaseAttrValue();
+        for(PmsBaseAttrInfo pmsBaseAttrInfo :pmsBaseAttrInfos){
+            pmsBaseAttrValue.setAttrId(pmsBaseAttrInfo.getId());
+            pmsBaseAttrInfo.setAttrValueList(pmsBaseAttrValueMapper.select(pmsBaseAttrValue));
+        }
+
         return  pmsBaseAttrInfos;
 
     }
@@ -100,6 +116,17 @@ public class AttrServiceImpl implements AttrService {
         PmsBaseAttrValue pv = new PmsBaseAttrValue();
         pv.setAttrId(attrId);
         return pmsBaseAttrValueMapper.select(pv);
+    }
+
+    @Override
+    public List<PmsProductSaleAttr> selectByProductId(PmsProductSaleAttr pmsProductSaleAttr) {
+        List<PmsProductSaleAttr> pmsProductSaleAttrs =  pmsProductSaleAttrMapper.select(pmsProductSaleAttr);
+        return pmsProductSaleAttrs;
+    }
+
+    @Override
+    public List<PmsProductSaleAttrValue> getProductSaleAttrValueList(PmsProductSaleAttrValue pmsProductSaleAttrValue) {
+        return pmsProductSaleAttrValueMapper.select(pmsProductSaleAttrValue);
     }
 
 

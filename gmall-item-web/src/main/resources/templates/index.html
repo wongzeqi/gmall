@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/html">
 <head>
-    <meta charset="UTF-8" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" />
+    <meta charset="UTF-8" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <title>Title</title>
 </head>
 <body>
+
+
+
 hello world
-<th:a href="#">哈哈</th:a>
+
+<p th:text="${hello}">无数据</p>
+
+<p th:each="str:${list}" th:text="${str}"></p>
+
+<input type="checkbox" th:checked="${check=='0'}"/>
+
+<a th:href="'javascript:f(\''+${hello}+'\');'">点我</a>
+
+<!--页面引入-->
+<div th:include="index_in">被引入的页面</div><!--这里的文字不显示-->
+
+<div th:include="index_in::index_part">被引入页面的部分页面</div>
+<script lang="javascript">
+    
+    function f(data) {
+        alert("sadas"+data);
+    }
+</script>
 </body>
 </html>
 <!--thymeleaf是一个模板引擎 必须严格按照 规范
@@ -15,4 +36,13 @@ hello world
 
 
     添加thymeleaf  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"  约束
+
+    为thymeleaf 增加松校验  和  热部署
+
+    ctrl +  shfit + f9  提交修改
+
+
+    <a th:href="'javascript:f(\''+${hello}+'\');'">点我</a>
+    真几把绕
+
 -->

@@ -42,6 +42,12 @@ public class PmsSkuInfo implements Serializable {
     @Column
     String skuDefaultImg;
 
+    //这个是我加上去的
+    @Transient
+    String productName;
+
+
+
     @Transient
     List<PmsSkuImage> skuImageList;
 
@@ -145,5 +151,13 @@ public class PmsSkuInfo implements Serializable {
 
     public void setSkuSaleAttrValueList(List<PmsSkuSaleAttrValue> skuSaleAttrValueList) {
         this.skuSaleAttrValueList = skuSaleAttrValueList;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 }

@@ -1,12 +1,12 @@
 package com.wjq.gmall.manage.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
-import com.wjq.gmall.bean.PmsBaseCatalog1;
-import com.wjq.gmall.bean.PmsBaseCatalog2;
-import com.wjq.gmall.bean.PmsBaseCatalog3;
 import com.wjq.gmall.manage.mapper.PmsBaseCatalog1Mapper;
 import com.wjq.gmall.manage.mapper.PmsBaseCatalog2Mapper;
 import com.wjq.gmall.manage.mapper.PmsBaseCatalog3Mapper;
+import com.wjq.gmall.bean.PmsBaseCatalog1;
+import com.wjq.gmall.bean.PmsBaseCatalog2;
+import com.wjq.gmall.bean.PmsBaseCatalog3;
 import com.wjq.gmall.service.CatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
 
