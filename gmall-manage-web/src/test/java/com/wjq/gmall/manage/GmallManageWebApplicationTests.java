@@ -1,6 +1,6 @@
 package com.wjq.gmall.manage;
 
-import com.wjq.util.Const;
+import com.wjq.gmall.util.Const;
 import org.csource.common.MyException;
 import org.csource.fastdfs.ClientGlobal;
 import org.csource.fastdfs.StorageClient;

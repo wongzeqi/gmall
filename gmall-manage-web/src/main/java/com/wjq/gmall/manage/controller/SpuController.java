@@ -7,7 +7,7 @@ import com.wjq.gmall.bean.PmsProductImage;
 import com.wjq.gmall.bean.PmsProductInfo;
 import com.wjq.gmall.bean.PmsProductSaleAttr;
 import com.wjq.gmall.service.SpuService;
-import com.wjq.util.PmsUploadUtil;
+import com.wjq.gmall.util.PmsUploadUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;

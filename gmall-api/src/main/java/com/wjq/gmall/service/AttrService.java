@@ -7,6 +7,7 @@ import com.wjq.gmall.bean.PmsBaseAttrInfo;
 import com.wjq.gmall.bean.PmsBaseAttrValue;
 
 import java.util.List;
+import java.util.Set;
 
 public interface AttrService {
     List<PmsBaseAttrInfo> attrInfoList(String catalog3Id);
@@ -18,4 +19,6 @@ public interface AttrService {
     List<PmsProductSaleAttr> selectByProductId(PmsProductSaleAttr pmsProductSaleAttr);
 
     List<PmsProductSaleAttrValue> getProductSaleAttrValueList(PmsProductSaleAttrValue pmsProductSaleAttrValue);
+
+    List<PmsBaseAttrInfo> getAttrValueListByValueIds(Set<String> valueIdSet);
 }
