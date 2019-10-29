@@ -16,4 +16,6 @@ public interface CartService {
     OmsCartItem ifCartExitByUser(String memberId, String skuId);
 
     void checkCart(OmsCartItem omsCartItem);
+
+    List<OmsCartItem> cartList(String memberId);
 }

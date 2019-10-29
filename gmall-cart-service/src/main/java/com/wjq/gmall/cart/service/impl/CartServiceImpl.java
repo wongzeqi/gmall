@@ -3,6 +3,7 @@ package com.wjq.gmall.cart.service.impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.alibaba.fastjson.JSON;
 import com.wjq.gmall.bean.OmsCartItem;
+import com.wjq.gmall.bean.UmsMember;
 import com.wjq.gmall.cart.mapper.OmsCartItemMapper;
 
 
@@ -104,5 +105,12 @@ public class CartServiceImpl implements CartService {
         // 缓存同步
         flushCartCache(omsCartItem.getMemberId());
 
+    }
+
+    @Override
+    public List<OmsCartItem> cartList(String memberId) {
+        OmsCartItem omsCartItem = new OmsCartItem();
+        omsCartItem.setMemberId(memberId);
+        return cartMapper.selectByExample(omsCartItem);
     }
 }

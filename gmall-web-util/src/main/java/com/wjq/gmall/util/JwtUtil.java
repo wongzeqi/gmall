@@ -4,6 +4,8 @@ import io.jsonwebtoken.*;
 
 import java.util.Map;
 
+
+//自定义加密解密算法
 public class JwtUtil {
 
     public static String encode(String key, Map<String,Object> param, String salt){
@@ -20,7 +22,7 @@ public class JwtUtil {
     }
 
 
-    public  static Map<String,Object>  decode(String token ,String key,String salt){
+    public  static Map<String,Object>  decode(String token,String key,String salt){
         Claims claims=null;
         if (salt!=null){
             key+=salt;

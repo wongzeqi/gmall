@@ -2,6 +2,7 @@ package com.wjq.gmall.search.controller;
 
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.wjq.gmall.annotations.LoginRequire;
 import com.wjq.gmall.bean.*;
 import com.wjq.gmall.service.AttrService;
 import com.wjq.gmall.service.SearchService;
@@ -22,6 +23,7 @@ public class SearchController {
     AttrService attrService;
 
     //主页
+    @LoginRequire(loginSuccess = false)
     @RequestMapping("index")
     public String index (){
         return "index";

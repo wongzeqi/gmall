@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,17 +35,12 @@ public class CartController {
 
     @Autowired
     AuthInterceptor authInterceptor;
-    @RequestMapping("toTrade")
-    @LoginRequire(loginSuccess = true)
-    public String toTrade( HttpServletRequest request, HttpServletResponse response, HttpSession session, ModelMap modelMap) {
 
-        System.out.println(authInterceptor);
-        return "toTradeTest";
-    }
 
 
 
     @RequestMapping("checkCart")
+    @LoginRequire(loginSuccess = true)
     public String checkCart(String isChecked,String skuId,HttpServletRequest request, HttpServletResponse response, HttpSession session, ModelMap modelMap) {
 
         String memberId = "1";
@@ -65,6 +61,7 @@ public class CartController {
 
 
     @RequestMapping("cartList")
+    @LoginRequire(loginSuccess = true)
     public String cartList(HttpServletRequest request, HttpServletResponse response, HttpSession session, ModelMap modelMap) {
 
         List<OmsCartItem> omsCartItems = new ArrayList<>();
