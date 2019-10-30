@@ -107,10 +107,4 @@ public class CartServiceImpl implements CartService {
 
     }
 
-    @Override
-    public List<OmsCartItem> cartList(String memberId) {
-        OmsCartItem omsCartItem = new OmsCartItem();
-        omsCartItem.setMemberId(memberId);
-        return cartMapper.selectByExample(omsCartItem);
-    }
 }

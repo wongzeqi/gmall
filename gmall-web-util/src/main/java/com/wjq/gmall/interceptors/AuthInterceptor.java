@@ -67,12 +67,15 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
                 response.sendRedirect(Const.VERIFY_REDIRECT_URL+requestUrl);
                 return false;
             }
-            //验证通过需要覆盖cookie
-            if(StringUtils.isNotBlank(token)){
-                CookieUtil.setCookie(request,response,"oldToken",token,60*60*2,true);
-                System.out.println("cookie添加成功");
-            }
-            //需要将token携带的用户信息写入redis
+            // 需要将token携带的用户信息写入
+            request.setAttribute("memberId", successMap.get("memberId"));
+            request.setAttribute("nickname", successMap.get("nickname"));
+//            //验证通过需要覆盖cookie
+//            if(StringUtils.isNotBlank(token)){
+//                CookieUtil.setCookie(request,response,"oldToken",token,60*60*2,true);
+//                //System.out.println("cookie添加成功");
+//            }
+
         }else {
             // 没有登录也能用，但是必须验证
             if (success.equals("success")) {
@@ -80,10 +83,10 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
                 request.setAttribute("memberId", successMap.get("memberId"));
                 request.setAttribute("nickname", successMap.get("nickname"));
 
-                //验证通过，覆盖cookie中的token
-                if (StringUtils.isNotBlank(token)) {
-                    CookieUtil.setCookie(request, response, "oldToken", token, 60 * 60 * 2, true);
-                }
+//                //验证通过，覆盖cookie中的token
+//                if (StringUtils.isNotBlank(token)) {
+//                    CookieUtil.setCookie(request, response, "oldToken", token, 60 * 60 * 2, true);
+//                }
 
             }
         }

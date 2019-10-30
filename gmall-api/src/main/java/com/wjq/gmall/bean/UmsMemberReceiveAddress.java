@@ -18,6 +18,7 @@ public class UmsMemberReceiveAddress implements Serializable {
     private String region;
     private String detailAddress;
 
+
     public String getId() {
         return id;
     }

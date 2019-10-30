@@ -130,6 +130,7 @@ public class PassportController {
             token = JwtUtil.encode(Const.PRIVATE_KEY,userMap,ip);
 
             userService.addUserToken(token,memberId);//将token写入redis中
+            //登录成功将token写入cookie中
             CookieUtil.setCookie(request, response, "oldToken", token, 60 * 60 * 2, true);
         }
         return token;

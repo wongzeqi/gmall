@@ -30,6 +30,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UmsMemberReceiveAddress> getReceiveAddressByMemberId(String memberId) {
         //通用的mapper的条件查询
+
         Example e = new Example(UmsMemberReceiveAddress.class);
         e.createCriteria().andEqualTo("memberId",memberId);
 

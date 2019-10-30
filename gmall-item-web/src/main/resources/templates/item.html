@@ -1030,8 +1030,10 @@
 			});
 			var kuSaleAttrValueJson = JSON.parse(skuSaleAttrValueJsonStr);
 			var v_skuId = kuSaleAttrValueJson[k];
-			if(v_skuId){
+
+			if(v_skuId!=undefined){
 				window.location.href = "item.gmall.com:8082/"+v_skuId+".html";
+				alert("item.gmall.com:8082/"+v_skuId+".html");
 			}
 
 		}
